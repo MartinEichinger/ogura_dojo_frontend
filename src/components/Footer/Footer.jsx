@@ -128,7 +128,11 @@ const Footer = ({ colors, select }) => {
         heading: 'Allgemein',
         items: [
           { title: 'Impressum', target: '#idModalImpressum' },
-          { title: 'Login', target: '#idModalLogin' },
+          {
+            title: 'Login',
+            target: 'url',
+            link: () => selectpage('https://ogura-dojo-cms.directus.app/', 'url'),
+          },
         ],
       },
     ],

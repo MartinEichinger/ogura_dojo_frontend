@@ -33,11 +33,12 @@ const CombiButton = ({ colors, className, links }) => {
   const list = ['ARTIKEL LESEN', 'WEBSEITE', 'VIDEO SEHEN'];
   //const icons = ['far fa-file', 'fas fa-at', 'far fa-circle-play'];
   const icons = [faFile, faAt, faCirclePlay];
-  const isAvailable = [links[0] !== '', links[1] !== '', links[2] !== ''];
+  const isAvailable = [links[0] !== null, links[1] !== null, links[2] !== null];
   const countAvailable = isAvailable.filter(Boolean).length;
   const firstAvailable = isAvailable.indexOf(true);
 
   if (debug) console.log('List: ', list);
+  if (debug) console.log('Links: ', links);
   if (debug) console.log('Icons: ', icons);
   if (debug) console.log('isAvailable: ', isAvailable);
   if (debug) console.log('countAvailable: ', countAvailable);
@@ -53,11 +54,6 @@ const CombiButton = ({ colors, className, links }) => {
           colors={colors}
           disabled={countAvailable <= 1}
         >
-          {/*           {countAvailable === 0 && <i className={icons[0]}></i>}
-          {countAvailable === 1 && <i className={icons[firstAvailable]}></i>}
-          {visible === true && countAvailable > 1 && <i className="fas fa-caret-up fa-xs"></i>}
-          {visible === 0 && countAvailable > 1 && <i className="fas fa-caret-down fa-xs"></i>}
-          {visible === false && countAvailable > 1 && <i className="fas fa-caret-down fa-xs"></i>} */}
           {countAvailable === 0 && <FontAwesomeIcon icon={icons[0]} size="2x" />}
           {countAvailable === 1 && <FontAwesomeIcon icon={icons[0]} size="2x" />}
           {visible === true && countAvailable > 1 && <FontAwesomeIcon icon={faCaretUp} size="2x" />}
