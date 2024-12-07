@@ -3,24 +3,16 @@
 import { jsx } from '@emotion/react';
 
 import React from 'react';
-import { useSelector } from 'react-redux';
-
-import { Button } from '@mui/material';
 import { EventContactForm } from '../EventContactForm/EventContactForm';
-import EventFormEditSave from '../EventFormEditSave/EventFormEditSave';
 import EventFormInfos from '../EventFormInfos/EventFormInfos';
 import EventFormSchedule from '../EventFormSchedule/EventFormSchedule';
-//import { makeStyles } from '@material-ui/core/styles';
 import { useCustomStyles } from './Events.style';
 import { useFormControls } from './Events.controls';
 
 const Events = ({ events, colors, mq }) => {
   // constants
   const debug = false;
-  if (debug) console.log('Events : ', events, colors, mq);
-
-  // state
-  const isAuthenticated = useSelector((state) => state.auth.token !== null);
+  if (debug) console.log('Events : ', events);
 
   // style
   //const classes = useStyles();
@@ -31,11 +23,11 @@ const Events = ({ events, colors, mq }) => {
 
   const entries = [
     // part I
-    { name: 'title', label: 'Seminar', id: '#title', val_length: 80, required: 'true' },
-    { name: 'date', label: 'Termin', id: '#date' },
-    { name: 'location', label: 'Ort', id: '#location', val_length: 80, required: 'true' },
+    { name: 'seminar_title', label: 'Seminar', id: '#title', val_length: 80, required: 'true' },
+    { name: 'seminar_date', label: 'Termin', id: '#date' },
+    { name: 'seminar_location', label: 'Ort', id: '#location', val_length: 80, required: 'true' },
     {
-      name: 'organisator',
+      name: 'seminar_organiser',
       label: 'Ausrichter/Trainer',
       id: '#organisator',
       val_length: 80,
@@ -67,86 +59,35 @@ const Events = ({ events, colors, mq }) => {
   ];
 
   // methods
-  const {
-    newEvent,
-    selectEvent,
-    delEvent,
-    saveFormData,
-    onChangeEvent,
-    onChangeDate,
-    setEditData,
-    formIsValid,
-    handleFormSubmit,
-    editData,
-    entryData,
-    changedData,
-    errors,
-  } = useFormControls({
-    events,
-    entries,
-  });
+  const { selectEvent, onChangeEvent, formIsValid, handleFormSubmit, entryData, changedData, errors } =
+    useFormControls({
+      events,
+      entries,
+    });
 
-  const isAuthEdit = editData && isAuthenticated;
-  const isAuthNoEdit = !editData && isAuthenticated;
-  if (debug) console.log('Events/props : ', changedData, entryData, isAuthEdit, isAuthNoEdit);
+  if (debug) console.log('Events/props : ', changedData, entryData);
 
   return (
     <React.Fragment>
       {events.length > 0 && (
         <div className="schedule d-flex flex-column scroll_" css={style}>
-          <EventFormSchedule
-            events={events}
-            month={month}
-            selectEvent={selectEvent}
-            delEvent={delEvent}
-            isAuthenticated={isAuthenticated}
-          />
-          {isAuthenticated && (
-            <Button
-              //className={classes.root2}
-              variant="contained"
-              color="primary"
-              onClick={() => newEvent()}
-            >
-              Neuer Event
-            </Button>
-          )}
+          <EventFormSchedule events={events} month={month} selectEvent={selectEvent} />
         </div>
       )}
       {events.length > 0 && (
         <div className="detail d-flex flex-column scroll_" css={style}>
-          <EventFormInfos
-            //style={classes.root1}
-            inFieldVal={entries.slice(0, 8)}
-            isAuthEdit={isAuthEdit}
-            isAuthNoEdit={isAuthNoEdit}
-            setEditData={setEditData}
-            onChangeEvent={onChangeEvent}
-            onChangeDate={onChangeDate}
-            entryData={entryData}
-            changedData={changedData}
-            errors={errors}
-          />
+          <EventFormInfos inFieldVal={entries.slice(0, 8)} changedData={changedData} />
 
-          {!isAuthEdit && (
-            <EventContactForm
-              //style={classes.root2}
-              inFieldVal={entries.slice(8, 10)}
-              event={changedData.title}
-              value={changedData}
-              onChangeEvent={onChangeEvent}
-              errors={errors}
-              formIsValid={formIsValid}
-              handleFormSubmit={handleFormSubmit}
-            />
-          )}
-          {isAuthEdit && (
-            <EventFormEditSave
-              //style={classes.root2}
-              saveFormData={saveFormData}
-              formIsValid={formIsValid}
-            />
-          )}
+          <EventContactForm
+            //style={classes.root2}
+            inFieldVal={entries.slice(8, 10)}
+            event={changedData.title}
+            value={changedData}
+            onChangeEvent={onChangeEvent}
+            errors={errors}
+            formIsValid={formIsValid}
+            handleFormSubmit={handleFormSubmit}
+          />
         </div>
       )}
     </React.Fragment>
