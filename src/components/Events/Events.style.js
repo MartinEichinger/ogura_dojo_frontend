@@ -120,6 +120,16 @@ export const useCustomStyles = ({ mq, colors }) => {
       backgroundColor: 'rgba(255,255,255,0.5)',
       padding: '2vh',
 
+      '& .invitation': {
+        marginTop: '16px',
+        marginBottom: '32px',
+
+        '& p': {
+          marginBottom: '0px',
+          marginRight: '16px',
+        },
+      },
+
       '& h3': {
         textDecoration: 'underline',
         margin: '1vh 0vh',
