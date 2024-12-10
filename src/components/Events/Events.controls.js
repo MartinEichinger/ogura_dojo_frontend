@@ -23,7 +23,7 @@ export const useFormControls = ({ events, entries }) => {
   // Find index of first event dataset which is younger than today
   var idx = events.findIndex((event, i) => {
     var today = new Date();
-    var event_date = new Date(event.date);
+    var event_date = new Date(event.seminar_date);
     return event_date > today;
   });
 
