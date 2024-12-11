@@ -2,7 +2,7 @@ import React from 'react';
 import { IContentPage } from '../ModalPanziGong/ModalPanziGong';
 
 const CompTxtStripTxt = ({ content, clickLeftRight }: { content: any; clickLeftRight?: any }) => {
-  var debug = false;
+  var debug = true;
   if (debug) console.log('CompTxtStripTxt/content: ', content);
 
   return (
