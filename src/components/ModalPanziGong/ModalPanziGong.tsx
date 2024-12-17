@@ -5,7 +5,7 @@ import { jsx } from '@emotion/react';
 import { clickUpDown, nextItem } from '../../helper/navigation-helper';
 import useGraphQLQuery from '../../hooks/useGraphQLQuery';
 import ModalInNavigation from '../ModalInNavigation/ModalInNavigation';
-import CompTxtStripTxt from '../CompTxtStripTxt/CompTxtStripTxt';
+import CompTxtStripTxt from '../CompTxtStripTxt/CompTxtStripTxt_';
 import CompTxtStrip2Txt from '../CompTxtStripTxt/CompTxtStrip2Txt';
 import '../animation.css';
 
@@ -34,7 +34,7 @@ export interface IContentPage {
 }
 
 export default function ModalPanziGong({ colors, mq }: { colors: any; mq: any }) {
-  const debug = false;
+  const debug = true;
 
   const stats = {
     navItems: ['PanziGong', 'Lehrer', 'Form'],
@@ -44,7 +44,7 @@ export default function ModalPanziGong({ colors, mq }: { colors: any; mq: any })
     animated: 0,
     upDown: 1,
   };
-  const apdx = 'PanziGong';
+  const apdx = 'PG';
 
   const style: any = {
     width: '100vw',
@@ -248,35 +248,42 @@ export default function ModalPanziGong({ colors, mq }: { colors: any; mq: any })
   };
 
   const query = `query {
-            ContentPage {
-                id
-                contentNav
-                customClass
-                titleNo1_L1
-                classTitleNo1_L1
-                titleNo1_L2
-                contentNo1
-                pics
-                vids
-                titleNo2_L1 {
-                  entry
-                }
-                classTitleNo2_L1
-                contentNo2 {
-                  entry {
-                    entry
-                  }
-                }
+    content_panzigong {
+      id
+      pages {
+        id
+        title
+        subpages {
+          id
+          title
+          pics {
+            id
+            directus_files_id {
+              id
             }
-        }`;
+          }
+          translations {
+            id
+            content_item {
+              id
+              content
+              video
+            }
+          }
+        }
+      }
+    }
+  }`;
 
-  const contentPage = useGraphQLQuery(query);
+  var contentPanziGong = useGraphQLQuery(query);
 
-  if (debug) console.log('ModalPanziGong/Results', contentPage);
+  if (debug) console.log('ModalPanziGong/Results', contentPanziGong);
 
   colors.bgTheme = colors.bgGreen;
   colors.bgTheme50 = colors.bgGreen50;
   colors.typoTheme = colors.typoGreen;
+
+  contentPanziGong = contentPanziGong?.content_panzigong[0].pages;
 
   return (
     <>
@@ -306,13 +313,13 @@ export default function ModalPanziGong({ colors, mq }: { colors: any; mq: any })
               />
               <div className="content">
                 <div className="csPanziGongPG">
-                  {contentPage && <CompTxtStripTxt content={[contentPage.ContentPage[0]]} />}
+                  {contentPanziGong && <CompTxtStripTxt content={contentPanziGong?.[0]} />}
                 </div>
                 <div className="csLehrerPG d-none">
-                  {contentPage && <CompTxtStripTxt content={[contentPage.ContentPage[1]]} />}
+                  {contentPanziGong && <CompTxtStripTxt content={contentPanziGong?.[1]} />}
                 </div>
                 <div className="csFormPG d-none">
-                  {contentPage && <CompTxtStrip2Txt content={[contentPage.ContentPage[2]]} />}
+                  {contentPanziGong && <CompTxtStripTxt content={contentPanziGong?.[2]} />}
                 </div>
               </div>
             </div>

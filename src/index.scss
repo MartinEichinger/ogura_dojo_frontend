@@ -47,6 +47,7 @@ body {
 
 #root {
   font-family: 'Lato', sans-serif;
+
   h1 {
     font-size: 38px;
     font-weight: bold;
@@ -178,7 +179,8 @@ body {
     }
   }
 
-  p {
+  p,
+  ol {
     font-size: 20px;
     font-weight: normal;
 
