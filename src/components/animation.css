@@ -99,16 +99,13 @@
   0% {
     transform: translateX(0);
     opacity: 1;
-    display: block;
   }
   99% {
     opacity: 1;
-    display: block;
   }
   100% {
     transform: translateX(-1500px);
     opacity: 0;
-    display: none;
   }
 }
 /* ############################# */
@@ -170,16 +167,13 @@
   0% {
     transform: translateX(1500px);
     opacity: 0;
-    display: none;
   }
   1% {
     opacity: 1;
-    display: block;
   }
   100% {
     transform: translateX(0);
     opacity: 1;
-    display: block;
   }
 }
 /* ############################# */
