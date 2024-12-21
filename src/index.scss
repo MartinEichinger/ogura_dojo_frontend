@@ -33,6 +33,7 @@ $bgWhite: rgba(255, 255, 255, 1);
 $bgRed: rgba(121, 0, 0, 1);
 $typoGrey: rgba(64, 64, 64, 1);
 $typoGreen: rgba(19, 73, 0, 1);
+$typoBlue: rgba(23, 85, 118, 1);
 $typoRed: rgba(121, 0, 0, 1);
 $shadowGrey: rgba(122, 122, 122, 1);
 
@@ -47,6 +48,7 @@ body {
 
 #root {
   font-family: 'Lato', sans-serif;
+
   h1 {
     font-size: 38px;
     font-weight: bold;
@@ -178,7 +180,8 @@ body {
     }
   }
 
-  p {
+  p,
+  ol {
     font-size: 20px;
     font-weight: normal;
 
@@ -296,6 +299,10 @@ body {
 
 .green {
   color: $typoGreen;
+}
+
+.blue {
+  color: $typoBlue;
 }
 
 .bgGreen {
