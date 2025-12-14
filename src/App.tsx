@@ -12,6 +12,8 @@ import ModalBlog from './components/ModalBlog/ModalBlog';
 import ModalEvents from './components/ModalEvents/ModalEvents';
 import Footer from './components/Footer/Footer';
 import ModalImpressum from './components/ModalImpressum/ModalImpressum';
+import ModalLieferbedingungen from './components/ModalLieferbedingungen/ModalLieferbedingungen';
+import ModalDatenschutz from './components/ModalDatenschutz/ModalDatenschutz';
 
 export interface IColors {
   bgGreen50: string;
@@ -131,6 +133,8 @@ function App() {
       <ModalBlog lang={lang} />
       <ModalEvents lang={lang} />
       <ModalImpressum lang={lang} />
+      <ModalLieferbedingungen lang={lang} />
+      <ModalDatenschutz lang={lang} />
       <div className="Frame bg">
         <div className="Content d-flex flex-row flex-wrap justify-content-center">{renderCards()}</div>
       </div>

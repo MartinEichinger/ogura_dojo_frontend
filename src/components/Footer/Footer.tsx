@@ -22,7 +22,7 @@ interface IFooterContent {
 
 const Footer = ({ select }: { select: Function }) => {
   // DEBUG
-  const debug = false;
+  const debug = true;
 
   const selectpage = (page?: string, param?: string) => {
     if (debug) console.log('Footer/selectpage', page, param);
