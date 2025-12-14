@@ -110,7 +110,7 @@ export default function Navigation({ select }: { select: Function }) {
                 Termine
               </button>
               <Modal>
-                <Modal.Button>Bücher</Modal.Button>
+                <Modal.Button>Büchershop</Modal.Button>
                 <ModalContent title={'Büchershop'}>
                   <Bookshop />
                 </ModalContent>
