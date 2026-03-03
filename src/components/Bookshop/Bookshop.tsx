@@ -10,6 +10,7 @@ const contentCards = [
   {
     img: 'panzigongII.jpg',
     author: 'Ding HongYu',
+    short_title: 'Panzi Gong II',
     title: 'Gesundheitsübung mit der Tellerdrehung',
     sub_title: 'Panzi Gong II',
     content:
@@ -23,6 +24,7 @@ const contentCards = [
   {
     img: 'panzigong.jpg',
     author: 'Ding HongYu',
+    short_title: 'Panzi Gong',
     title: 'Gesundheitsübung mit der Tellerdrehung',
     sub_title: 'Panzi Gong - Teller Gong',
     content:
@@ -36,6 +38,7 @@ const contentCards = [
   {
     img: 'gun.jpg',
     author: 'Ding HongYu',
+    short_title: 'Stock',
     title: 'Gesundheitsübung mit der Stockdrehung',
     sub_title: 'Üben mit Freude für ein glückliches und langes Leben',
     content:
@@ -49,6 +52,7 @@ const contentCards = [
   {
     img: 'gesundheit.jpg',
     author: 'Ding HongYu',
+    short_title: 'Gesundheit',
     title: 'Lebe die Gesundheit',
     sub_title: 'Das Leben braucht Bewegung',
     content:
@@ -62,6 +66,7 @@ const contentCards = [
   {
     img: 'liebe.jpg',
     author: 'Ding HongYu',
+    short_title: 'Acht Brokate',
     title: 'Liebe die Gesundheit',
     sub_title: 'Schätze das Leben',
     content:
@@ -76,6 +81,7 @@ const contentCards = [
 
 export interface IArticle {
   img: string;
+  short_title: string;
   name: string;
   subname: string;
   amount: number;
@@ -144,7 +150,7 @@ export default function Bookshop() {
   var themeContext = useContext(ThemeContext)!;
   var enabled = articles.length > 0 && name !== '' && email !== '' && address !== '';
 
-  if (debug) console.log('Bookshop: ', articles);
+  if (debug) console.log('Bookshop: ', articles, themeContext);
 
   return (
     <BookshopBody className="bookshopbody d-flex flex-row flex-wrap" articles={articles}>
@@ -163,14 +169,22 @@ export default function Bookshop() {
                 return (
                   <Article className="d-flex flex-row justify-content-between" key={idx}>
                     <img src={`./${item.img}`} alt={item.name} />
-                    <p className="name">
+                    <ArticleDetailShort className="name">
+                      {item.short_title} -{' '}
+                      {item.price.toLocaleString('de-DE', {
+                        style: 'currency',
+                        currency: 'EUR',
+                        minimumFractionDigits: 2,
+                      })}
+                    </ArticleDetailShort>
+                    <ArticleDetail className="name">
                       {item.name} - {item.subname} -{' '}
                       {item.price.toLocaleString('de-DE', {
                         style: 'currency',
                         currency: 'EUR',
                         minimumFractionDigits: 2,
                       })}
-                    </p>
+                    </ArticleDetail>
                     <PlusMinusButton
                       value={item.amount}
                       countUp={() => {
@@ -277,6 +291,20 @@ export default function Bookshop() {
     </BookshopBody>
   );
 }
+
+const ArticleDetailShort = styled.p`
+  display: none;
+  ${(props) => props.theme.breakpoints.mq[3]} {
+    display: inline;
+  }
+`;
+
+const ArticleDetail = styled.p`
+  display: inline;
+  ${(props) => props.theme.breakpoints.mq[3]} {
+    display: none;
+  }
+`;
 
 const MyTextField = styled(TextField)`
   width: 48%;

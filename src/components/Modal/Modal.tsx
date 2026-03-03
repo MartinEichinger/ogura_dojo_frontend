@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import * as DialogPrimitives from '@radix-ui/react-dialog';
+import { IconX } from '@tabler/icons-react';
 
 interface IModal {
   children: any;
@@ -26,7 +27,12 @@ const DialogContent = ({
     <DialogPrimitives.Portal>
       <DialogOverlay />
       <DialogContentBody aria-describedby={undefined} className={className}>
-        <DialogPrimitives.Title>{title}</DialogPrimitives.Title>
+        <div className="d-flex flex-row justify-content-between align-items-start">
+          <DialogPrimitives.Title>{title}</DialogPrimitives.Title>
+          <DialogPrimitives.Close aria-label="Close">
+            <IconX color={'black'} size={36} />
+          </DialogPrimitives.Close>
+        </div>
         {children}
       </DialogContentBody>
     </DialogPrimitives.Portal>
@@ -48,6 +54,37 @@ const DialogContentBody = styled(DialogPrimitives.Content)`
   max-height: 1080px;
   padding: 25px;
   animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  & .btn-close {
+    width: 45px;
+    height: 45px;
+    margin: 1px;
+    padding: 0px;
+    border-radius: 45px;
+    line-height: 0;
+    position: relative;
+    right: 0px;
+    top: 0px;
+    background-color: ${(props) => props.theme.colors.typoGrey};
+    border: none;
+    outline: none;
+    z-index: 1100;
+
+    ${(props) => props.theme.breakpoints.mq[2]} {
+      width: 33px;
+      height: 33px;
+    }
+
+    ${(props) => props.theme.breakpoints.mq[1]} {
+      width: 28px;
+      height: 28px;
+    }
+
+    ${(props) => props.theme.breakpoints.mq[0]} {
+      width: 23px;
+      height: 23px;
+    }
+  }
 
   &:focus {
     outline: none;
