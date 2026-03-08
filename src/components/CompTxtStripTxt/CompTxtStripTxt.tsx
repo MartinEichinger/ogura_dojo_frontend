@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import { IPage, ISubpage, IContentItem, IPic, IVideoItem } from '../ModalPanziGong/ModalPanziGong';
 import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react';
 
+const backendPath = process.env.REACT_APP_BACKEND_PATH!;
+
 const CompTxtStripTxt = ({ content, clickLeftRight }: { content: IPage; clickLeftRight?: Function }) => {
   var debug = false;
 
@@ -71,7 +73,7 @@ const CompTxtStripTxt = ({ content, clickLeftRight }: { content: IPage; clickLef
                         className={'img'}
                         key={i}
                         style={{
-                          backgroundImage: `url('https://ogura-dojo-cms.directus.app/assets/${pic.directus_files_id.id}')`,
+                          backgroundImage: `url('${backendPath}/assets/${pic.directus_files_id.id}')`,
                           backgroundPosition: '50% 0%',
                         }}
                       ></div>

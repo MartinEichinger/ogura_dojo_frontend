@@ -40,7 +40,7 @@ export interface IBlogNav {
 }
 
 export default function ModalBlog({ lang }: { lang: string }) {
-  const debug = true;
+  const debug = false;
 
   const [filterState, setFilterState] = useState('Alle');
 

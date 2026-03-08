@@ -17,7 +17,7 @@ export interface IContentKarate {
 }
 
 export default function ModalKarate({ page, select }: { page: string; select: Function }) {
-  const debug = false;
+  const debug = true;
 
   const stats = {
     navItems: ['TenguRyu', 'Lehrer'],
@@ -68,7 +68,8 @@ export default function ModalKarate({ page, select }: { page: string; select: Fu
   themeContext.colors.bgTheme50 = themeContext.colors.bgRed50;
   themeContext.colors.typoTheme = themeContext.colors.typoRed;
 
-  if (debug) console.log('ModalKarate/render', themeContext);
+  if (debug)
+    console.log('ModalKarate/render', themeContext, contentKaratePage?.[0], contentKaratePage?.[1]);
 
   useEffect(() => {
     onMount({ stats, apdx, select });

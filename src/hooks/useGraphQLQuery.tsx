@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { createDirectus, graphql } from '@directus/sdk';
 
-const debug = 1;
+const debug = 0;
 const backendPath = process.env.REACT_APP_BACKEND_PATH!;
 
 const useGraphQLQuery = (query: string) => {
