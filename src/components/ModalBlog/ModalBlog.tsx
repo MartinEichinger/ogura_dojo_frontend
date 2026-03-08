@@ -40,7 +40,7 @@ export interface IBlogNav {
 }
 
 export default function ModalBlog({ lang }: { lang: string }) {
-  const debug = false;
+  const debug = true;
 
   const [filterState, setFilterState] = useState('Alle');
 
@@ -61,11 +61,11 @@ export default function ModalBlog({ lang }: { lang: string }) {
     blog_data {
         id
         picture {
-            id
+          id
         }
         picture_position
         file {
-            id
+          id
         }
         website
         video
@@ -80,7 +80,7 @@ export default function ModalBlog({ lang }: { lang: string }) {
             content
         }
     }
-}`;
+  }`;
 
   const contentBlog: IBlogContent = useGraphQLQuery(query);
   if (debug) console.log('ModalBlog/Results', contentBlog);

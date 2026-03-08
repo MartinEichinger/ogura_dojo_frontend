@@ -131,11 +131,11 @@ export default function ModalTraining({ page, select }: { page: string; select: 
         },
         {
           heading: ['TuS Traunreut: '],
-          listing: ['unter 18J: 60€ und über 18J: 120€'],
+          listing: ['unter 18J: 80€ und über 18J: 150€'],
         },
         {
           heading: ['TuS - Abt. Karate/Taiji: '],
-          listing: ['20€'],
+          listing: ['40€'],
         },
         {
           heading: ['Verband CRB (Tengu Ryu): '],

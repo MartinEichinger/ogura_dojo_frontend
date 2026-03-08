@@ -4,6 +4,7 @@ import { IBlogData } from '../ModalBlog/ModalBlog';
 
 const BlogEntry = ({ blogs, filterState }: { blogs: any; filterState: string }) => {
   const debug = false;
+  const backendPath = process.env.REACT_APP_BACKEND_PATH!;
 
   if (debug) console.log('BlogEntry: ', blogs);
 
@@ -20,7 +21,7 @@ const BlogEntry = ({ blogs, filterState }: { blogs: any; filterState: string }) 
             <div className="body d-flex flex-row">
               <div
                 style={{
-                  backgroundImage: `url("https://ogura-dojo-cms.directus.app/assets/${item.picture?.id}")`,
+                  backgroundImage: `url("${backendPath}/assets/${item.picture?.id}")`,
                   backgroundPosition: item.picture_position,
                 }}
                 className="image"
@@ -34,11 +35,7 @@ const BlogEntry = ({ blogs, filterState }: { blogs: any; filterState: string }) 
               </div>
             </div>
             <BlogButtonGroup
-              links={[
-                `https://ogura-dojo-cms.directus.app/assets/${item.file?.id}`,
-                item.website,
-                item.video,
-              ]}
+              links={[`${backendPath}/assets/${item.file?.id}`, item.website, item.video]}
             />
           </BlogCard>
         ) : (

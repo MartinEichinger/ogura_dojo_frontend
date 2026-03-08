@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react';
 import { createDirectus, graphql } from '@directus/sdk';
 
+const debug = 1;
+const backendPath = process.env.REACT_APP_BACKEND_PATH!;
+
 const useGraphQLQuery = (query: string) => {
   const [queryResult, setQueryResult] = useState<any>();
 
   useEffect(() => {
-    const client = createDirectus('https://ogura-dojo-cms.directus.app/').with(graphql());
+    const client = createDirectus(backendPath).with(graphql());
 
     const getResults = async () => {
       const result = await client.query(query);
@@ -16,6 +19,7 @@ const useGraphQLQuery = (query: string) => {
     /* eslint-disable */
   }, []);
 
+  if (debug > 0) console.log('useGraphQLQuery: ', query, queryResult);
   return queryResult;
 };
 

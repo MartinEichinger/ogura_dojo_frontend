@@ -56,8 +56,10 @@ const ModalCol = styled.div`
     font-size: calc(5rem + 2.5vw);
     margin-bottom: 1vh;
     color: ${(props) => props.theme.colors.bgGrey};
-    text-shadow: ${(props) => props.theme.colors.bgRed} 2px 0 0,
-      ${(props) => props.theme.colors.bgRed} 0 2px 0, ${(props) => props.theme.colors.bgRed} -2px 0 0,
+    text-shadow:
+      ${(props) => props.theme.colors.bgRed} 2px 0 0,
+      ${(props) => props.theme.colors.bgRed} 0 2px 0,
+      ${(props) => props.theme.colors.bgRed} -2px 0 0,
       ${(props) => props.theme.colors.bgRed} 0 -2px 0;
   }
 
