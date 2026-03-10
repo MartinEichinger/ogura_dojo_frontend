@@ -17,7 +17,7 @@ export interface IContentQiGong {
 }
 
 export default function ModalQiGong({ page, select }: { page: string; select: Function }) {
-  const debug = true;
+  const debug = false;
 
   const stats = {
     navItems: ['QiGong', 'Lehrer', 'Form'],

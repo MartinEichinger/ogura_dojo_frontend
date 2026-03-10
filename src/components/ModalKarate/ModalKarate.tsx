@@ -17,7 +17,7 @@ export interface IContentKarate {
 }
 
 export default function ModalKarate({ page, select }: { page: string; select: Function }) {
-  const debug = true;
+  const debug = false;
 
   const stats = {
     navItems: ['TenguRyu', 'Lehrer'],
