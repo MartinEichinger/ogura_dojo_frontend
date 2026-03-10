@@ -17,7 +17,7 @@ export interface IContentQiGong {
 }
 
 export default function ModalQiGong({ page, select }: { page: string; select: Function }) {
-  const debug = false;
+  const debug = true;
 
   const stats = {
     navItems: ['QiGong', 'Lehrer', 'Form'],
@@ -71,7 +71,7 @@ export default function ModalQiGong({ page, select }: { page: string; select: Fu
   themeContext.colors.bgTheme50 = themeContext.colors.bgBlue50;
   themeContext.colors.typoTheme = themeContext.colors.typoBlue;
 
-  if (debug) console.log('ModalQiGong/render: ', contentQiGong);
+  if (debug) console.log('ModalQiGong/render: ', contentQiGong, contentQiGongPage);
 
   useEffect(() => {
     onMount({ stats, apdx, select });
@@ -103,13 +103,13 @@ export default function ModalQiGong({ page, select }: { page: string; select: Fu
               />
               <div className="content">
                 <div className="csQiGongQG">
-                  <CompTxtStripTxt content={contentQiGongPage?.[0].pages[0]} />
+                  <CompTxtStripTxt content={contentQiGongPage?.[0].pages?.[0]} />
                 </div>
                 <div className="csLehrerQG d-none">
-                  <CompTxtStripTxt content={contentQiGongPage?.[1].pages[0]} />
+                  <CompTxtStripTxt content={contentQiGongPage?.[0].pages?.[1]} />
                 </div>
                 <div className="csFormQG d-none">
-                  <CompTxtStripTxt content={contentQiGongPage?.[2].pages[0]} />
+                  <CompTxtStripTxt content={contentQiGongPage?.[0].pages?.[2]} />
                 </div>
               </div>
             </div>

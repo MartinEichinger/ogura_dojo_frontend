@@ -58,7 +58,7 @@ export interface IStats {
 }
 
 export default function ModalPanziGong({ page, select }: { page: string; select: Function }) {
-  const debug = false;
+  const debug = true;
 
   const stats: IStats = {
     navItems: ['PanziGong', 'Lehrer', 'Form'],
