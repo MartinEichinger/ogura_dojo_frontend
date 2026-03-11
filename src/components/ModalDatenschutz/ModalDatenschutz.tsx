@@ -16,7 +16,7 @@ export interface IContentDatenschutz {
 
 export default function ModalDatenschutz({ lang }: { lang: string }) {
   // Debugging
-  const debug = true;
+  const debug = false;
 
   const query = `query {
     content_datenschutz {

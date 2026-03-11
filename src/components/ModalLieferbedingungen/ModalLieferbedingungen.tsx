@@ -16,7 +16,7 @@ export interface IContentLieferbedingungen {
 
 export default function ModalLieferbedingungen({ lang }: { lang: string }) {
   // Debugging
-  const debug = true;
+  const debug = false;
 
   const query = `query {
     content_lieferbedingungen {
