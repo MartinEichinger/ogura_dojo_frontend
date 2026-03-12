@@ -15,7 +15,7 @@ const BlogEntry = ({ blogs, filterState }: { blogs: any; filterState: string }) 
           <BlogCard className="blog-card d-flex flex-column" key={i}>
             <div className="d-flex flex-row justify-content-between align-items-baseline">
               <h5 className="text-center w-100 green regular">
-                {item.translations?.[0]?.date} +++ {item.translations?.[0]?.tags}
+                {item.translations?.[0]?.date?.split('T')[0]} +++ {item.translations?.[0]?.tags}
               </h5>
             </div>
             <div className="body d-flex flex-row">
